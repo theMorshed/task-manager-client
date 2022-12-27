@@ -3,6 +3,7 @@ import AddTask from "./AddTask";
 import CompletedTasks from "./CompletedTasks";
 import Layout from "./Layout";
 import MyTasks from "./MyTasks";
+import UpdateTask from "./UpdateTask";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,12 @@ const router = createBrowserRouter([
                 path: '/completed-task',
                 loader: () => fetch('http://localhost:5000/completetask'),
                 element: <CompletedTasks></CompletedTasks>
-            }
+            },
+            {
+                path: '/update/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`),
+                element: <UpdateTask></UpdateTask>
+            },
         ]
     }
 ]);

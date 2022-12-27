@@ -1,12 +1,12 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const MyTasks = () => {
     const tasks = useLoaderData();
 
     const handleComplete = id => {
         // update order status unsold to sold
-        fetch(`http://localhost:5000/updatetask/${id}`, {
+        fetch(`http://localhost:5000/complete/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -40,7 +40,9 @@ const MyTasks = () => {
                                     {task.task}
                                 </th>                                
                                 <td className="py-4 px-6">
-                                    <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
+                                    <Link to={`/update/${task._id}`}>
+                                        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
+                                    </Link>
                                 </td>
                                 <td className="py-4 px-6">
                                     <button onClick={() => handleComplete(task._id)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Complete</button>
