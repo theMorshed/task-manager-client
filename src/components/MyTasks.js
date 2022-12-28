@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 
 const MyTasks = () => {
     const tasks = useLoaderData();
+    const navigate = useNavigate();
 
     const handleComplete = id => {
         // update order status unsold to sold
-        fetch(`http://localhost:5000/complete/${id}`, {
+        fetch(`https://task-manager-server-nu.vercel.app/complete/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
             .then(result => {
-                
+                navigate('/completed-task');
             })
     }
 

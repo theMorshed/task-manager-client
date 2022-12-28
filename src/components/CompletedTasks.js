@@ -4,12 +4,12 @@ import { useLoaderData } from 'react-router-dom';
 const CompletedTasks = () => {
     const tasks = useLoaderData();
     const handleDelete = id => {
-        fetch(`http://localhost:5000/deletetask/${id}`, {
+        fetch(`https://task-manager-server-nu.vercel.app/deletetask/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(result => {
-                console.log('deleted successfully');
+                window.location.reload();
             })
     }
     return (

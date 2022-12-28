@@ -10,7 +10,7 @@ const UpdateTask = () => {
         const form = e.target;
         const task = form.task.value;
 
-        fetch(`http://localhost:5000/update/${_id}`, {
+        fetch(`https://task-manager-server-nu.vercel.app/update/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

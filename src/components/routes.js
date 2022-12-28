@@ -16,17 +16,17 @@ const router = createBrowserRouter([
             },
             {
                 path: '/my-task',
-                loader: () => fetch('http://localhost:5000/my-task'),
+                loader: () => fetch('https://task-manager-server-nu.vercel.app/my-task'),
                 element: <MyTasks></MyTasks>
             }, 
             {
                 path: '/completed-task',
-                loader: () => fetch('http://localhost:5000/completetask'),
+                loader: () => fetch('https://task-manager-server-nu.vercel.app/completetask'),
                 element: <CompletedTasks></CompletedTasks>
             },
             {
                 path: '/update/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`),
+                loader: ({ params }) => fetch(`https://task-manager-server-nu.vercel.app/update/${params.id}`),
                 element: <UpdateTask></UpdateTask>
             },
         ]
